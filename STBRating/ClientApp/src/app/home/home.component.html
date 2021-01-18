@@ -1,14 +1,95 @@
-<h1>Hello, world!</h1>
-<p>Welcome to your new single-page application, built with:</p>
-<ul>
-  <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-  <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>
-  <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
-</ul>
-<p>To help you get started, we've also set up:</p>
-<ul>
-  <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
-  <li><strong>Angular CLI integration</strong>. In development mode, there's no need to run <code>ng serve</code>. It runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</li>
-  <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration automatically invokes <code>ng build</code> to produce minified, ahead-of-time compiled JavaScript files.</li>
-</ul>
-<p>The <code>ClientApp</code> subdirectory is a standard Angular CLI application. If you open a command prompt in that directory, you can run any <code>ng</code> command (e.g., <code>ng test</code>), or use <code>npm</code> to install extra packages into it.</p>
+<!--HEADER-->
+<section>
+  <div class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-7">
+          <img src="assets/img/logo.png" class="img img-fluid mt-1" alt="Alternate Text" />
+        </div>
+        <div class="col-5 text-right">
+          <button class="btn btn-light"><img src="assets/img/uk.png" class="mr-1" alt="Alternate Text" /> English</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--END HEADER-->
+<!--CONTENT-->
+<section  *ngIf="!isSuccess">
+  <div class="content">
+    <div class="container">
+      <h3 class="text-center title my-4">ĐÁNH GIÁ DỊCH VỤ</h3>
+      <div class="row">
+        <div class="col-12 text-center">
+          <rating [(ngModel)]="rate" [max]="5" [customTemplate]="rateTemplate"></rating>
+          <ng-template #rateTemplate let-i="index" let-v="value">
+            <button (click)="rating()">
+              <i class="fas fa-star {{i < v ? 'yellow' : 'gray'}}-star"></i>
+            </button>
+          </ng-template>
+        </div>
+      </div>
+      <div *ngIf="rate == 0" class="text-center text-blue mt-4 sub-text">
+        Hôm nay bạn trải nghiệm dịch vụ,<br />
+        sản phẩm tại Sacombank như thế nào?
+      </div>
+      <div *ngIf="rate == 5" class="text-center text-blue mt-4 sub-text">
+        Điều gì đã làm Quý khách hài lòng?
+      </div>
+      <div *ngIf="rate > 0 && rate < 5" class="text-center text-blue mt-4 sub-text">
+        Điều gì đã làm Quý khách không hài lòng?
+      </div>
+    </div>
+  </div>
+</section>
+<!--END CONTENT-->
+<!--REASON-->
+<section  *ngIf="!isSuccess"> 
+  <div class="reason">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center" *ngIf="rate == 5">
+          <span class="span-reason-active  mt-3 mx-1 mt-3">Nhân viên thân thiện</span>
+          <span class="span-reason mt-3 mx-1 mt-3">Sản phẩm tốt</span>
+        </div>
+        <div class="col-12 text-center" *ngIf="rate > 0 && rate < 5">
+          <span class="span-reason-active  mt-3 mx-1 mt-3">Không thân thiện</span>
+          <span class="span-reason mt-3 mx-1 mt-3">Sản phẩm tệ</span>
+          <span class="span-reason mt-3 mx-1 mt-3">Phức tạp</span>
+          <span class="span-reason mt-3 mx-1 mt-3">Chậm chạp</span>
+        </div>
+        <div class="col-12 text-center" *ngIf="rate > 0">
+          <span class="other-reason mt-3" (click)="showOtherReason()"><i class="fas fa-plus-circle"></i> Thêm lý do khác</span>
+          <div class="form-group" *ngIf="isShowOtherReason">
+            <textarea class="form-control text-other-reason mt-1" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="col-12 text-center" *ngIf="rate > 0">
+          <button class="btn-submit mt-3" (click)="submit()">
+            Gửi đánh giá
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--END REASON-->
+<!--SUCCESS-->
+<section *ngIf="isSuccess">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center text-white mt-4">
+        <div class="success bg-success rounded p-3">
+          <i class="fas fa-check-circle fa-3x"></i>
+          <br />
+          <h4 class="font-weight-bold">Gửi thành công!</h4>
+          <h6 class="font-weight-light mt-2 thank">
+            Cám ơn Quý khách đã dành thời gian quý báu chia sẻ trải nghiệm với chúng tôi.
+            Mọi ý kiến đóng góp của Quý khách giúp chúng tôi cải thiện chất lượng dịch vụ của Ngân hàng.
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--END SUCCESS-->

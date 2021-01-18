@@ -1,0 +1,94 @@
+body {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.header {
+  background-color: #0C55A3;
+  height: 60px;
+}
+
+.header .row {
+  transform: translate(0, 25%);
+}
+
+.header button {
+  color: #0C55A3;
+}
+
+.title {
+  color: #0C55A3;
+  font-weight: 900;
+}
+
+.yellow-star {
+  color: #F3EA34;
+  font-size: 40px;
+}
+
+.gray-star {
+  color: #C9DAEE;
+  font-size: 40px;
+}
+
+span {
+  outline: none !important;
+}
+
+.content button {
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.text-blue {
+  color: #0C55A3;
+}
+
+.sub-text {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.span-reason {
+  color: #0C55A3;
+  border: 1px solid #0C55A3;
+  border-radius: 100px;
+  padding: 6px 15px;
+  display: inline-block;
+}
+
+.span-reason-active {
+  color: white;
+  background-color: #0C55A3;
+  border: 1px solid #0C55A3;
+  border-radius: 100px;
+  padding: 6px 15px;
+  display: inline-block;
+}
+
+.other-reason {
+  color: #0C55A3;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.text-other-reason {
+  border: 1px solid #0C55A3;
+  border-radius: 8px;
+  color: #0C55A3;
+}
+
+.btn-submit {
+  background: #F77335;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.thank{
+    line-height: 25px;
+}
